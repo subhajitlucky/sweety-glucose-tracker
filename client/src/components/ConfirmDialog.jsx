@@ -35,7 +35,13 @@ export default function ConfirmDialog({
       )}
 
       <div className="modal-actions">
-        <button type="button" className="btn btn--ghost" onClick={onCancel} disabled={busy}>
+        <button
+          type="button"
+          className="btn btn--ghost"
+          onClick={onCancel}
+          disabled={busy}
+          data-autofocus="true"
+        >
           Keep it
         </button>
         <button type="button" className="btn btn--danger" onClick={onConfirm} disabled={busy}>
