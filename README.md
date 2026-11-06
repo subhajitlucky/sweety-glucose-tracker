@@ -249,7 +249,9 @@ Valid slots: `morning`, `after_breakfast`, `after_lunch`, `after_dinner`.
 - **Accessibility:** labelled controls, visible focus states, focus-managed dialogs, keyboard-friendly calendar navigation, reduced-motion support and semantic tables.
 - **Medical note:** the 70–180 mg/dL chart band is a general reference only. The UI states that users should follow their clinician's target range.
 
-## Product decisions
+## Notes
+
+### Assumptions
 
 1. The four time slots are fixed for consistency across days and reports.
 2. Four unique slots enforce the four-reading daily limit, and the API also checks the count explicitly to return a clear fifth-reading message.
@@ -258,7 +260,7 @@ Valid slots: `morning`, `after_breakfast`, `after_lunch`, `after_dinner`.
 5. The Docker setup is for local review over HTTP. Production should use HTTPS and `COOKIE_SECURE=true`.
 6. Only patient accounts are supported in the current version.
 
-## Future improvements
+### What I would improve with more time
 
 - Add doctor accounts with scoped patient access.
 - Cache report aggregates in Redis and add BullMQ reminders.
