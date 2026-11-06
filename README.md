@@ -55,7 +55,7 @@ Patients can record up to four readings a day, edit or delete them, and review a
 - [x] Pagination on `GET /api/readings?page=1&limit=20`.
 - [x] Month-to-date line chart with Recharts.
 - [x] Dockerfile and `docker-compose.yml` for PostgreSQL + the app.
-- [x] Frontend tests with React Testing Library for the reading form.
+- [x] Frontend tests with React Testing Library for the reading form and date picker.
 
 Not attempted: Redis caching, BullMQ reminders and the doctor role.
 
@@ -245,7 +245,7 @@ npm run test:client
 What the tests cover:
 
 - **API (11 integration tests, real PostgreSQL):** registration, bcrypt hashes, duplicate emails, login/logout, session-required routes, all validation messages, duplicate slot, the four-reading limit, ownership isolation, edit/delete, report calculations and labels, empty reports, report-date validation, pagination.
-- **Frontend (5 tests):** required value, range/non-integer validation, future-date validation, successful submit payload, and rendering the server's duplicate-slot error.
+- **Frontend (7 tests):** required value, range/non-integer validation, future-date validation, successful submit payload, rendering the server's duplicate-slot error, calendar date selection, and disabled future dates.
 
 The API tests create the separate `sweety_test` database if it does not exist, rebuild the schema, and truncate between tests. They never touch development data. This requires the PostgreSQL user to have permission to create databases; the Docker user does.
 

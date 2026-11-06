@@ -83,6 +83,12 @@ export const IconChevronRight = (props) => (
   </Svg>
 );
 
+export const IconChevronDown = (props) => (
+  <Svg {...props}>
+    <path d="m6 9 6 6 6-6" />
+  </Svg>
+);
+
 export const IconCalendar = (props) => (
   <Svg {...props}>
     <rect x="3" y="5" width="18" height="16" rx="3" />

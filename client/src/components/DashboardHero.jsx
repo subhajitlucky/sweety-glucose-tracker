@@ -5,8 +5,8 @@ import {
   getGreeting,
   todayISO,
 } from '../lib/dates.js';
+import DatePicker from './DatePicker.jsx';
 import {
-  IconCalendar,
   IconChevronLeft,
   IconChevronRight,
   IconPlus,
@@ -53,19 +53,11 @@ export default function DashboardHero({
               <IconChevronLeft size={18} />
             </button>
 
-            <label className="date-navigator__field">
-              <IconCalendar size={17} />
-              <span className="sr-only">Selected date</span>
-              <span className="date-navigator__value" aria-hidden="true">
-                {formatDate(selectedDate)}
-              </span>
-              <input
-                type="date"
-                value={selectedDate}
-                max={today}
-                onChange={(event) => onDateChange(event.target.value)}
-              />
-            </label>
+            <DatePicker
+              value={selectedDate}
+              max={today}
+              onChange={onDateChange}
+            />
 
             <button
               type="button"
