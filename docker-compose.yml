@@ -1,0 +1,39 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: sweety-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-sweety}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-sweety}
+      POSTGRES_DB: ${POSTGRES_DB:-sweety}
+    ports:
+      - "5433:5432"
+    volumes:
+      - sweety-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-sweety} -d ${POSTGRES_DB:-sweety}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  app:
+    build: .
+    container_name: sweety-app
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      NODE_ENV: production
+      PORT: 4000
+      DATABASE_URL: postgresql://${POSTGRES_USER:-sweety}:${POSTGRES_PASSWORD:-sweety}@db:5432/${POSTGRES_DB:-sweety}
+      DATABASE_SSL: "false"
+      JWT_SECRET: ${JWT_SECRET:?Set a strong JWT_SECRET in .env before running docker compose}
+      COOKIE_SECURE: "false"
+      CLIENT_URL: http://localhost:4000
+    ports:
+      - "4000:4000"
+
+volumes:
+  sweety-db-data:
