@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Build output
+client/dist/
+server/public/
+coverage/
+*.tsbuildinfo
+
+# Logs and editor files
+*.log
+npm-debug.log*
+.DS_Store
+.idea/
+.vscode/
+
+# Test artifacts
+test-results/
+playwright-report/
+blob-report/
