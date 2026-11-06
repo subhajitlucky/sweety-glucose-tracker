@@ -77,7 +77,7 @@ export function formatDateRange(start, end) {
 }
 
 /**
- * Returns the three report windows required by the product brief.
+ * Returns the three report windows used throughout the application.
  * `selectedDate` is a validated YYYY-MM-DD date.
  */
 export function getReportRanges(selectedDate) {
